@@ -11,5 +11,7 @@ test('Get all Employees with Events', async () => {
   expect(response.status()).toBe(200);
 
   const body = await response.json();
-  console.log(body)
+  // console.log(body)
+  // console.log(Object.keys(body));
+  console.log(body.employees[0].experience)
 });

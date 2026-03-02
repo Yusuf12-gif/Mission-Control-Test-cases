@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test';
 import { createApiContext } from '../../utils/apiClient';
 
-test('Get Attendance Statistics', async({request})=>{
+test('Get Attendance Statistics', async()=>{
     const api = await createApiContext();
     const response=await api.get('/api/attendance/statistics',{
         params:{
