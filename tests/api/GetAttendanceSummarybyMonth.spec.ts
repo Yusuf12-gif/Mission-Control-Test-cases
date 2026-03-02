@@ -1,17 +1,10 @@
 import { test, expect } from '@playwright/test';
+import { createApiContext } from '../../utils/apiClient';
 
 test('Attendance Summary', async ({ request }) => {
+  const api = await createApiContext();
   const month='05-2025'
-
-  const response = await request.get(
-    `/api/attendance/summary/month/${month}`,
-    {
-      headers: {
-        Authorization: `Bearer eyJraWQiOiJEdnl3UTdFWThRWGNxV1pMa2R6Njg4N1lvOU1YbHVLZ2ZLckR0NGJESFdFPSIsImFsZyI6IlJTMjU2In0.eyJhdF9oYXNoIjoieGh2djRvTTZ5bE4yLTJhRk1WeURRdyIsInN1YiI6ImIxNDNhZDVhLTMwOTEtNzA1MC1iMTBjLTAzNTE3ZjJlNDVmMyIsImNvZ25pdG86Z3JvdXBzIjpbIkNhcHRhaW4iLCJBZG1pbiJdLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC5hcC1zb3V0aC0xLmFtYXpvbmF3cy5jb21cL2FwLXNvdXRoLTFfV1hSVnlFaHBxIiwiY29nbml0bzp1c2VybmFtZSI6InRyaWNvbi1lbnRyYS1pZF8zNzQyYjhmMS02ZDRlLTQ5OTMtODM0My1kYTA2MGQ4MDQ5OTYiLCJvcmlnaW5fanRpIjoiMmMxZjE4N2UtZDI0Yy00MzI2LThmOTMtZjljMDgzYmU4YjA5IiwiYXVkIjoiNHNvZ2FodXBuNTlocDN1OXFlNmc2cm1yMjQiLCJpZGVudGl0aWVzIjpbeyJkYXRlQ3JlYXRlZCI6IjE3NjQwNTE4NTIzNDEiLCJ1c2VySWQiOiIzNzQyYjhmMS02ZDRlLTQ5OTMtODM0My1kYTA2MGQ4MDQ5OTYiLCJwcm92aWRlck5hbWUiOiJUcmljb24tRW50cmEtSWQiLCJwcm92aWRlclR5cGUiOiJTQU1MIiwiaXNzdWVyIjoiaHR0cHM6XC9cL3N0cy53aW5kb3dzLm5ldFwvNmJhMDQ0MzktOGIwZS00M2VlLWFkMjYtYzJhYzllZjllNzY1XC8iLCJwcmltYXJ5IjoidHJ1ZSJ9XSwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE3NzIwODYyMDMsImV4cCI6MTc3MjQzNDg4NCwiaWF0IjoxNzcyNDMxMjg0LCJqdGkiOiIwYTIxZTVmMi1jODAwLTQ2NDItYjZkYS1mYTdlOWI3Yjk5NmQiLCJlbWFpbCI6Im5pa2hpdGhhLnJhanVsYWdhcmlAVHJpY29uaW5mb3RlY2guY29tIn0.D60AyymI7rJ57hOr16_ScyGReYsw9D3V_lXz3YxwWnGaMKb9kGQKseBkwopWYUmHlBY8T8iJBwu6QQhFiNvYZAyQTNc-VV80UxYj0JdjBcreqKDUNBMIBikFtM-UgahdsmqtklFdn9Mju5R5kWqaJWlS8N4_zlo8Fbzn8lnxOWN0L2C5GWi6-ESfjP3FbBunLmgIPsVxouqab3wufzUr7NCr9bPH-L0qmH5C8Y0692KfUBX_6W1-hv97XqriBcWwreLb6BlvFIY64Gam1GhRdSDprRFyp7_ZVeo_jminlmuK3-rNWs2AGKvnBGr3iyFCwQK-g4lwb7KiqoPFl59vEQ`
-      }
-    }
-  );
-
+  const response = await api.get(`/api/attendance/summary/month/${month}`);
   console.log("Status:", response.status());
   console.log("Content-Type:", response.headers()['content-type']);
   console.log(await response.json());
