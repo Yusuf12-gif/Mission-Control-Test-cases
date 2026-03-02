@@ -5,4 +5,5 @@ test('Get all Touchpoints', async({request})=>{
     expect(response.status()).toBe(200);
     const body=await response.json();
     console.log(body);
+    console.log(body.touchpoints[0].employees);
 })
