@@ -10,3 +10,6 @@ export async function createApiContext() {
     }
   });
 }
+
+// Create a file named token.ts inside utils folder and paste your bearer token in the format
+// export const AUTH_TOKEN= 'Your Bearer Token'
