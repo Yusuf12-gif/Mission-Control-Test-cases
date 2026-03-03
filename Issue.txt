@@ -1,2 +1,0 @@
-Get Attendance Aggregation By Manager is returning 404
-Get Attendance Aggregation By Manager & Year is returning 404
